@@ -1,0 +1,120 @@
+body {
+  font: 12px sans-serif;
+  color:#7a799;
+  margin: 10px;
+}
+
+.main{
+  padding: 5px;
+  margin-left: 40px;
+  color:#7a7996;
+  font-size: 20px;
+  font-weight: bold;
+}
+.legend{
+  margin-left:10px;
+  position:absolute;
+  left:450px;
+  top:20px;
+}
+.legendFont{
+  font-weight: bold;
+}
+.axis path, .axis line {
+  fill: none;
+  stroke: #7a7996;
+  stroke-width: 2px;
+  shape-rendering: crispEdges;
+}
+
+
+
+#body{
+  width: 30 %;
+  position: absolute;
+  border-radius: 5%;
+  left: 1150px;
+  top: 280px;
+}
+
+#slidercontainer{
+  width: 30 %;
+  position: absolute;
+  border-radius: 5%;
+  left: 1150px;
+  top: 20px;
+}
+.slider{
+  -webkit-appearance:none;
+  width:50%;
+  height:10px;
+  border-radius: 5px;
+  background: #7a7996;
+  background-size: 150px 10px;
+  background-position: center;
+  outline: :none;
+  opacity:0.7;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; 
+    background: #dddddd;
+    cursor: pointer;
+}
+
+div.tooltip { 
+    position: absolute;     
+    text-align: left;     
+    width: 100px;          
+    height: 80px;         
+    padding: 12px;       
+    font: 12px sans-serif;    
+    background: #7a7996; 
+    border: 0px;    
+    border-radius: 8px;     
+    pointer-events: none;    
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+.lists{
+  color: #81155;
+  font: 12px sans-serif;
+  font-weight: bold;
+  line-height: :1.5;
+}
+.dot{
+  fill:#ca99a6;
+}
+.button{
+  background-color: #7a7996;
+  border: none;
+  border-radius: 10%;
+  color: white;
+  display:inline-block;
+  position: relative;
+  padding: 6px;
+  left: 50px;
+}
+select {
+  min-width: 100px;
+  margin-left: 10px;
+  margin-right: 25px;
+}
+
+#container {
+  text-align: center;
+}
+
+#selectionUI {
+  display: block;
+  font: 12px sans-serif;      
+  font-weight: bold;
+
+}
+
+
