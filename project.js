@@ -1,5 +1,5 @@
-var viewWidth = 1150;
-var viewHeight = 560;
+var viewWidth = 1130;
+var viewHeight = 600;
 d3.select(window).on("resize", resize);
 var index = 0;
 
@@ -29,9 +29,9 @@ var z_subAfrica = d3.scaleOrdinal()
 var z_centralEU = d3.scaleOrdinal()
           .range(["#7f74a3", "#5e5083", "#3b2b70", "#190a4a", "#53136f", "#a57aa3", "#d5bcec"]);
 var z_asia =  d3.scaleOrdinal()
-          .range(["#ecbf68", "#cb952b", "#8b5c00", "#684510", "#8b7510", "#cba12b", "#eedb88"]);
+          .range(["#ecbf68", "#cb952b", "#8b5c00", "#684510", "#907c28", "#d9c77b", "#eee2a9"]);
 var z_mid= d3.scaleOrdinal()
-          .range(["#7c6b78"," #5c5058", "#33333f", "#281c32", "#54444b", "#746764", "#a8a3b9"]);
+          .range(["#7c6b78"," #5c5058", "#33333f", "#281c32", "#5d5c5e", "#847984", "#b8b3c7"]);
 var color = ["#688597", "#5e5083", "#9fbe62", "#cb952b", "#cc6969", "#5c5058"];
 var regions = ["Western Europe", "Central and Eastern Europe", "Americas", "Asia", "Africa", "Middle East"]
 var E_val=10, F_val=10, H_val=10, T_val=10, Fd_val=10, G_val=10, D_val=10;
@@ -60,8 +60,8 @@ var legend = svgLegend.selectAll(".legend1")
 legend.append("rect")
       .attr("x","0")
       .attr('y',"0")
-      .attr("width","15")
-      .attr("height","15")
+      .attr("width","13")
+      .attr("height","13")
       .style("fill",function(d,i){return color[i]})
 legend.append('text')
           .attr("x", 20)
@@ -119,6 +119,7 @@ function drawBarChart(){
 
     svg.append("g")
        .attr("class", "axis")
+       .attr("id", "xaxis")
        .attr("transform", "translate(0," + height +")" )
        .attr("font-weight","bold")
        .call(xAxis)
@@ -131,6 +132,7 @@ function drawBarChart(){
 
     svg.append("g")
        	   .attr("class", "axis")
+       	   .attr("id","yaxis")
            .call(yAxis)
        .append("text")
            .attr("dy", "0.25em")
@@ -323,11 +325,20 @@ function selectVariable() {
 
 function updatePoints(E_val,H_val,F_val,T_val,Fd_val,G_val,D_val) {
     xScale.domain(data_copy.map(function(d){return d["Country"];}));
+    yScale.domain([0, d3.max(d3.extent(data_copy, function(d){return d["total"];}))]).nice();
     cnt = -1;
-    d3.select(".axis").call(xAxis);
+
+    //d3.select(".axis").call(yAxis);
+
     var transition = d3.transition()
                        .duration(750)
                        .ease(d3.easeCubic);
+    d3.select("#xaxis")
+      .transition(transition)
+      .call(xAxis);
+    d3.select("#yaxis")
+      .transition(transition)
+      .call(yAxis);
 
     serie = svg.selectAll(".serie")
                .data(stack(data_copy))

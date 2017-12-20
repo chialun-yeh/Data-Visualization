@@ -1,25 +1,28 @@
 body {
   font: 12px sans-serif;
-  color:#7a799;
-  margin: 10px;
+  margin:0;
+  padding:0;
 }
 
-.main{
-  padding: 5px;
+.main_title{
   margin-left: 40px;
+  margin-top:20px;
+  margin-bottom: 10px;
   color:#7a7996;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
 }
+
 .legend{
-  margin-left:10px;
   position:absolute;
   left:450px;
-  top:20px;
+  top:25px;
 }
+
 .legendFont{
   font-weight: bold;
 }
+
 .axis path, .axis line {
   fill: none;
   stroke: #7a7996;
@@ -27,18 +30,16 @@ body {
   shape-rendering: crispEdges;
 }
 
-
-
 #body{
   width: 30 %;
   position: absolute;
   border-radius: 5%;
   left: 1150px;
-  top: 280px;
+  top: 290px;
 }
 
 #slidercontainer{
-  width: 30 %;
+  width:300px;
   position: absolute;
   border-radius: 5%;
   left: 1150px;
@@ -46,7 +47,7 @@ body {
 }
 .slider{
   -webkit-appearance:none;
-  width:50%;
+  width:65%;
   height:10px;
   border-radius: 5px;
   background: #7a7996;
@@ -83,9 +84,9 @@ div.tooltip {
 
 .lists{
   color: #81155;
-  font: 12px sans-serif;
+  font: 11px sans-serif;
   font-weight: bold;
-  line-height: :1.5;
+  line-height: 1.6;
 }
 .dot{
   fill:#ca99a6;

@@ -9,7 +9,7 @@
     <script src="RadarChart.js"></script>
 	</head>
 	<body>
-		<p class="title"> World Happiness Scores</p>
+		<p class="main_title"> World Happiness Scores</p>
 		<div id="vis">
 			<svg></svg>
 		</div>
@@ -37,28 +37,28 @@
   					Value = <span id="E_val"></span>
   				</div>
   			</li>
+        <li class="lists">Family
+          <div>
+            <input type="range" min="0" max ="10" value="10" class="slider" id="FRange" onmouseup = "update()">
+            Value = <span id="F_val"></span>
+          </div>
+        </li>
   			<li class="lists"> Health
   				<div>
   					<input type="range" min="0" max ="10" value="10" class="slider" id="HRange" onmouseup = "update()">
   					Value = <span id="H_val"></span>
   				</div>
   			</li>
-  			<li class="lists">Family
-  				<div>
-  					<input type="range" min="0" max ="10" value="10" class="slider" id="FRange" onmouseup = "update()">
-  					Value = <span id="F_val"></span>
-  				</div>
-  				</li>
+        <li class="lists">Freedom
+          <div>
+            <input type="range" min="0" max ="10" value="10"  class="slider" id="FdRange" onmouseup = "update()">
+            Value = <span id="Fd_val"></span>
+          </div>
+        </li>
   			<li class="lists">Trust
   				<div> 
   					<input type="range" min="0" max ="10" value="10"  class="slider" id="TRange" onmouseup = "update()">
   					Value = <span id="T_val"></span>
-  				</div>
-  			</li>
-  			<li class="lists">Freedom
-  				<div>
-  					<input type="range" min="0" max ="10" value="10"  class="slider" id="FdRange" onmouseup = "update()">
-  					Value = <span id="Fd_val"></span>
   				</div>
   			</li>
   			<li class="lists">Generosity
