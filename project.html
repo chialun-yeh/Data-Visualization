@@ -3,33 +3,43 @@
 	<head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/> 
 		<title>Happiness Scores</title>
-		<link rel=stylesheet href=project.css>
+		<link rel=stylesheet href=style.css>
 		<script type="text/javascript" src="d3.min.js" charset="utf-8"></script>
 		<script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
-    <script src="RadarChart.js"></script>
+    <script src="radarChart.js"></script>
 	</head>
 	<body>
 		<p class="main_title"> World Happiness Scores</p>
+
+    <!-- Create the stacked bar chart and legend-->
 		<div id="vis">
 			<svg></svg>
 		</div>
 		<div class="legend">
 	   		<div class="legend"></div>
 		</div>
-		<div id="container">
-		<div id="selectionUI">
-			Year:
-			<select id="yAxisItem" onchange="selectVariable()">
-				<option value="y2015" selected="selected">2015</option>
-				<option value="y2016">2016</option>
-				<option value="y2017">2017</option>
-			</select>
-			<button type="button" class="button" onclick = "clicksort(0)">Sort by Rank</button>
-			<button type="button" class="button" onclick = "clicksort(1)">Sort by Country</button>
+    <div class="des1">Click the square to choose the region.</div>
+    <div class="des2">
+      World Happiness Score is measured as the sum of six factors and an prediction term Dystopia.<br/> 
+      The detailed information of the survey can be found on http://worldhappiness.report/.
+    </div>
+    <!-- Create selection and buttons for the stacked bar chart -->
+    <div id="selectionUI"> Year:
+      <select class="options" id="year" onchange="selectYear()">
+        <option class="options" value="y2015" selected="selected">2015</option>
+        <option class="options" value="y2016">2016</option>
+        <option class="options" value="y2017">2017</option>
+      </select>
+    </div>
+    <div id="buttonContainer">
+			     <button type="button" class="button" onclick = "clicksort(0)">Sort by Rank</button>
+			     <button type="button" class="button" onclick = "clicksort(1)">Sort by Country</button>
+      </ul>
 		</div>
-		</div>
-		<!-- Create slider -->
+		<!-- Create slider for the stacked bar chart-->
 		<div id ="slidercontainer">
+      <p id="description"> Define your own Happiness Score!</p>
+      <p id="description"> Rate the factors according to their <br/> importance to you:</p>
 		<ul style="list-style-type:none">
   			<li class="lists"> Economy
   				<div class="slide">
@@ -76,14 +86,39 @@
 		</ul> 
 		</div>
 
+    <!-- Create radar chart -->
+    <div id="radar_container">
+      <h4 class="plot_title" id ="name"></h4>
+      <div id="chart"></div>
     </div>
 
-    <div id="body">
-      <h4 id ="name"></h4>
-      <div id="chart"></div>
-     </div>
-
-		<script type="text/javascript" src="newData.js"></script>
-		<script type="text/javascript" src="project1215.js"></script>
+    <!-- Create scatter plot -->
+    <div id="scatter_container">
+      <p class="plot_title"> Scatter Plot of all Countries</p>
+      <div id = "scatterPlot"></div>
+      <div id="scatter_selectionUI">
+        Factor 1:
+        <select class = "options" id="xAxisItem" onchange="selectVariable(0)">
+          <option class = "options" value="Economy" selected="selected">Economy</option>
+          <option class = "options" value="Family">Family</option>
+          <option class = "options" value="Health">Health</option>
+          <option class = "options" value="Trust">Trust</option>
+          <option class = "options" value="Freedom">Freedom</option>
+          <option class = "options" value="Generosity">Generosity</option>
+        </select>
+        &nbsp &nbspFactor 2:
+        <select class="options" id="yAxisItem" onchange="selectVariable(1)">
+          <option class="options" value="Score" selected="selected">Score</option>
+          <option class="options" value="Economy">Economy</option>
+          <option class="options" value="Family">Family</option>
+          <option class="options" value="Health">Health</option>
+          <option class="options" value="Trust">Trust</option>
+          <option class="options" value="Freedom">Freedom</option>
+          <option class="options" value="Generosity">Generosity</option>
+        </select>
+      </div>
+    </div>
+		<script type="text/javascript" src="happinessData.js"></script>
+		<script type="text/javascript" src="project.js"></script>
 	</body>
 </html>

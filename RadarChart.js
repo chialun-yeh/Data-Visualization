@@ -1,6 +1,6 @@
 
 var RadarChart = {
-  draw: function(id, d,d_true,data,con,index,options){
+  draw: function(id,d,d_true,data,con,index,max,options){
   var cfg = {
 	 radius: 4,
 	 w: 600,
@@ -10,14 +10,13 @@ var RadarChart = {
 	 levels: 3,
 	 maxValue: 0,
 	 radians: 2 * Math.PI,
-	 opacityArea: 0.4,
+	 opacityArea: 0.5,
 	 ToRight: 5,
 	 TranslateX: 80,
 	 TranslateY: 30,
 	 ExtraWidthX: 100,
 	 ExtraWidthY: 100,
-	 color: d3.scaleOrdinal(d3.schemeCategory20)
-	 //color: ["#404041","#404040","#737373"]
+	 color: d3.scaleOrdinal().range(["#FDD692","#58C9B9","#9baec8"])
 	};
 	
 	if('undefined' !== typeof options){
@@ -32,7 +31,7 @@ var RadarChart = {
 	var allAxis = (d[0].map(function(i, j){return i.axis}));
 	var total = allAxis.length;
 	var radius = cfg.factor*Math.min(cfg.w/2, cfg.h/2);
-	var Format = d3.format(".3f");
+	var Format = d3.format(".2f");
 	//var Format = d3.format('%');
 	d3.select(id).select("svg").remove();
 	
@@ -112,53 +111,52 @@ var RadarChart = {
 
 
 // legend
-var LegendOptions = ['2015','2016','2017'];
+	var LegendOptions = ['2015','2016','2017'];
 
-var text = g.append("text")
- .attr("class", "title")
- .attr('transform', 'translate(90,0)') 
-  .attr("x", -140)
-  .attr("y", 250)
-  .attr("font-size", "12px")
-  .attr("fill", "#404040")
-  .text("Mouse over polygon：select the according year");//"Mouse over nodes: true score / the max score among countries "
+	var text = g.append("text")
+	 .attr("class", "title")
+	 .attr('transform', 'translate(90,0)') 
+	  .attr("x", -140)
+	  .attr("y", 250)
+	  .attr("font-size", "12px")
+	  .attr("fill", "#404040")
+	  .text("Mouse over polygon：select the according year");//"Mouse over nodes: true score / the max score among countries "
 
-  var text2 = g.append("text")
- .attr("class", "title")
- .attr('transform', 'translate(90,0)') 
-  .attr("x", -140)
-  .attr("y", 265)
-  .attr("font-size", "12px")
-  .attr("fill", "#404040")
-  .text("Mouse over node: true score / the max score among countries");
-  
-  //Initiate Legend 
-var legend = g.append("g")//select("chart").
-  .attr("class", "legend")
-  .attr("height", 100)
-  .attr("width", 200)
-  .attr('transform', 'translate(90,-30)');
-  //Create colour squares
-legend.selectAll('rect')
-  .data(LegendOptions)
-  .enter()
-  .append("rect")
-  .attr("x", w - 65)
-  .attr("y", function(d, i){ return i * 15;})
-  .attr("width", 10)
-  .attr("height", 10)
-  .style("fill", function(d, i){ return cfg.color(i);});
-  //.style("fill", function(d, i){ return color[i];});
-  //Create text next to squares
-legend.selectAll('text')
-   .data(LegendOptions)
-   .enter()
-   .append("text")
-    .attr("x", w - 52)
-    .attr("y", function(d, i){ return i * 15 + 9;})
-    .attr("font-size", "11px")
-    .attr("fill", "#737373")
-    .text(function(d) { return d; }); 
+	  var text2 = g.append("text")
+	 .attr("class", "title")
+	 .attr('transform', 'translate(90,0)') 
+	  .attr("x", -140)
+	  .attr("y", 265)
+	  .attr("font-size", "12px")
+	  .attr("fill", "#404040")
+	  .text("Mouse over node: true score / the max score among countries");
+		  
+	  //Initiate Legend 
+	var legend = g.append("g")//select("chart").
+	  .attr("class", "legend")
+	  .attr("height", 100)
+	  .attr("width", 200)
+	  .attr('transform', 'translate(90,-30)');
+	  //Create colour squares
+	legend.selectAll('rect')
+	  .data(LegendOptions)
+	  .enter()
+	  .append("rect")
+	  .attr("x", w - 65)
+	  .attr("y", function(d, i){ return i * 15;})
+	  .attr("width", 10)
+	  .attr("height", 10)
+	  .style("fill", function(d, i){ return cfg.color(i);});
+	  //Create text next to squares
+	legend.selectAll('text')
+	   .data(LegendOptions)
+	   .enter()
+	   .append("text")
+	    .attr("x", w - 52)
+	    .attr("y", function(d, i){ return i * 15 + 9;})
+	    .attr("font-size", "11px")
+	    .attr("fill", "#737373")
+	    .text(function(d) { return d; }); 
 
  
 	d.forEach(function(y, x){
@@ -177,7 +175,6 @@ legend.selectAll('text')
 					 .append("polygon")
 					 .attr("class", "radar-chart-serie"+series)
 					 .style("stroke-width", "2px")
-					 //.style("stroke", color[series])
 					 .style("stroke", cfg.color(series))
 					 .attr("points",function(d) {
 						 var str="";
@@ -187,7 +184,6 @@ legend.selectAll('text')
 						 return str;
 					  })
 					 .style("fill", function(j, i){return cfg.color(series)})
-					 //.style("fill", function(j, i){return color[series]})
 					 .style("fill-opacity", cfg.opacityArea)
 					 .on('mouseover', function (d){
 										z = "polygon."+d3.select(this).attr("class");
@@ -196,7 +192,7 @@ legend.selectAll('text')
 										 .style("fill-opacity", 0.1); 
 										g.selectAll(z)
 										 .transition(200)
-										 .style("fill-opacity", 0.5);
+										 .style("fill-opacity", .7);
 									  })
 					 .on('mouseout', function(){
 										g.selectAll("polygon")
@@ -205,8 +201,9 @@ legend.selectAll('text')
 					 });
 	  series++;
 	});
-
 	series=0;
+
+
 	d.forEach(function(y, x){//d.forEach(function(y, x){
 	  g.selectAll(".nodes")
 		.data(y).enter()
@@ -227,6 +224,7 @@ legend.selectAll('text')
 		.attr("data-id", function(j){return j.axis})
 		.style("fill", cfg.color(series)).style("fill-opacity", .9)
 		.on('mouseover', function (d){
+			//console.log(d);
 					newX =  parseFloat(d3.select(this).attr('cx')) - 10;
 					newY =  parseFloat(d3.select(this).attr('cy')) - 5;
 					
@@ -236,13 +234,24 @@ legend.selectAll('text')
 						//.text(Format(d.value))
 						.text(function(){
 							var truevalue;
-							for(var j= 0;j<data[index].length;j++){
-								 if(data[index][j]["Country"] == con){
-								   truevalue = data[index][j][d.axis];
-
-							    }
+							var cat = d.axis;
+							var currentvalue = d.value;
+							console.log(cat + currentvalue);
+							for(i=0; i<7;i++){
+								console.log(max[i]["axis"]);
+								if(cat == max[i]["axis"]){
+									truevalue = max[i]["value"] * d.value;
+									console.log(max[i]["value"]);
+									console.log("truevalue" + truevalue);
+								}
 							}
-							return Format(truevalue);
+							// for(var j=0;j<data[index].length;j++){
+							// 	 if(data[index][j]["Country"] == con){
+							// 	 	console.log(d);
+							// 	   truevalue = data[index][j][d.axis];
+							//     }
+							// }
+							return "score: "+Format(truevalue);
 						})
 
 						.transition(200)
@@ -254,7 +263,7 @@ legend.selectAll('text')
 						.style("fill-opacity", 0.1); 
 					g.selectAll(z)
 						.transition(200)
-						.style("fill-opacity", 0.5);
+						.style("fill-opacity", .7);
 				  })
 		.on('mouseout', function(){
 					tooltip
@@ -265,7 +274,7 @@ legend.selectAll('text')
 						.style("fill-opacity", cfg.opacityArea);
 				  })
 		.append("svg:title")
-		.text(function(j){return Math.max(j.value, 0)});
+		.text(function(j){return "ratio: "+Format(Math.max(j.value, 0))});
 
 	  series++;
 	});

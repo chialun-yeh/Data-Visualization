@@ -1,0 +1,189 @@
+body {
+  font: 12px sans-serif;
+}
+
+.main_title{
+  position: absolute;
+  top: 650px;
+  left:1050px;
+  color:#999999;
+  font-size: 25px;
+  font-weight: bold;
+}
+#description{
+  font: 15px sans-serif;
+  font-weight: bold;
+  padding-right: 5px;
+  padding-left: 5px;
+  line-height: 1;
+  color:#fff;
+}
+.des1{
+  font-size:12px;
+  font-style: oblique;
+  position:absolute;
+  top:90px;
+  left:1280px;
+}
+.des2{
+  font-size:14px;
+  font-style: oblique;
+  position:absolute;
+  top:700px;
+  left:1050px;
+  line-height: 1.5;
+}
+.legend{
+  position:absolute;
+  left:1240px;
+  top:25px;
+}
+
+.legendFont{
+  font-weight: bold;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #999999;
+  stroke-width: 2px;
+  shape-rendering: crispEdges;
+}
+
+#slidercontainer{
+  position: absolute;
+  left: 1240px;
+  top: 130px;
+  background: #228899;
+  border-radius: 5%;
+  padding: 10px;
+  color:#fff;
+  width:300px;
+  opacity:0.8;
+}
+#buttonContainer {
+  position:absolute;
+  top:600px;
+  left:1100px;
+}
+#selectionUI {
+  position: absolute;
+  top:530px;
+  left:1280px;
+  font: 12px sans-serif;      
+  font-weight: bold;
+  width: 200px;
+}
+.slider{
+  -webkit-appearance:none;
+  width:60%;
+  height:10px;
+  border-radius: 5px;
+  background: #dddddd;
+  background-size: 150px 10px;
+  background-position: center;
+  outline: :none;
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; 
+    background: #999999;
+    cursor: pointer;
+}
+
+.tooltip { 
+    position: absolute;     
+    text-align: left;     
+    width: 100px;          
+    height: 80px;         
+    padding: 12px;       
+    font: 12px sans-serif;    
+    background: #999999; 
+    border: 0px;    
+    border-radius: 5%;     
+    pointer-events: none;    
+    font-weight: bold;
+    color: #ffffff;
+  }
+.tooltip_small {
+    position:absolute;
+    width: auto;
+    height: auto;
+    padding:5px;
+    font: 10px sans-serif;    
+    background: #999999; 
+    border: 0px;    
+    border-radius: 5%;     
+    pointer-events: none;    
+    font-weight: bold;
+    color: #ffffff; 
+}
+
+.lists{
+  font: 12px sans-serif;
+  font-weight: bold;
+  line-height: 1.5;
+}
+.buttonList{
+  line-height: 3;
+}
+.button{
+  background-color: #999999;
+  border: none;
+  border-radius: 5%;
+  color: white;
+  position: relative;
+  padding: 6px;
+  font: 12px sans-serif;
+  font-weight: bold;
+}
+
+#radar_container{
+  position: absolute;
+  margin:10px;
+  left: 600px;
+  top: 600px;
+}
+
+#scatter_container{
+  position:relative;
+  border-left: 30px;
+  width:550px;
+}
+#scatter_selectionUI{
+  position: absolute;
+  top: 0px;
+  left:230px;
+  font: 12px sans-serif;      
+  font-weight: bold;
+}
+.options{
+  font:12px sans-serif;
+  font-weight: bold;
+  border-radius: 5%;
+  background:#999999;
+  color:#fff;
+  padding:3px;
+}
+.plot_title{
+  font: 14px sans-serif;      
+  font-weight: bold;
+  margin-left:20px;
+}
+.label{
+  color:#000;
+  font: 10px sans-serif;      
+  font-weight: bold;
+}
+.grid line {
+  stroke:  #999999;
+  stroke-opacity: 0.5;
+  shape-rendering: crispEdges;
+}
+.grid path {
+  stroke-width: 0;
+}
+
